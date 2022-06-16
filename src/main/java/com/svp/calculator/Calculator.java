@@ -11,7 +11,9 @@ public class Calculator
     public static void main( String[] args ) throws IOException
     {
         try{           
+
             Scanner scanner = new Scanner(System.in);
+
             while(true){
                 System.out.println( "Input expression, please:");
                
@@ -22,11 +24,17 @@ public class Calculator
 
                 String input = scanner.nextLine();      
                 if (input.equalsIgnoreCase("exit")){
+                    System.out.println("Goodbye, my love!");
                     scanner.close();
                     break;
-                }          
-                System.out.printf("User input was: %s%n", input);
-                
+                }
+
+                CharStream expression = CharStreams.fromString(input);
+                CalculatorLexer lexer = new CalculatorLexer(expression);
+                CommonTokenStream tokens = new CommonTokenStream(lexer);
+                CalculatorParser parser = new CalculatorParser(tokens);
+                ParseTree tree = parser.start();
+                System.out.println(tree.toStringTree(parser));
 
             }
         }catch(Exception err){

@@ -102,6 +102,13 @@
           <descriptorRefs>
             <descriptorRef>jar-with-dependencies</descriptorRef>
           </descriptorRefs>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>lib/</classpathPrefix>
+              <mainClass>com.svp.calculator.Calculator</mainClass>
+            </manifest>
+          </archive>
         </configuration>
         <executions>
           <execution>
