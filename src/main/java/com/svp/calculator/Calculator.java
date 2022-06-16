@@ -29,20 +29,14 @@ public class Calculator
                     break;
                 }
 
-                System.out.println(input);
-
-                // CharStream expression = CharStreams.fromString(input);
-                // CalculatorLexer lexer = new CalculatorLexer(expression);
-                // CommonTokenStream tokens = new CommonTokenStream(lexer);
-                // CalculatorParser parser = new CalculatorParser(tokens);
-                // ParseTree tree = parser.start();
-
-                // CalculatorFinalVisitor calculator = new CalculatorFinalVisitor();
-
-                // Double result = calculator.visit(tree);
-
-                // System.out.printf("Calculation result: %n\n", result);
-
+                CharStream expression = CharStreams.fromString(input);
+                CalculatorLexer lexer = new CalculatorLexer(expression);
+                CommonTokenStream tokens = new CommonTokenStream(lexer);
+                CalculatorParser parser = new CalculatorParser(tokens);
+                ParseTree tree = parser.start();
+                CalculatorFinalVisitor calculator = new CalculatorFinalVisitor();
+                Double result = calculator.visit(tree);
+                System.out.printf("Calculation result: %.2f%n%n", result);
             }
         }catch(Exception err){
             System.out.printf("Error while running program: %s", err.getMessage());
