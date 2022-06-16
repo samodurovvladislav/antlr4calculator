@@ -23,18 +23,25 @@ public class Calculator
                 }
 
                 String input = scanner.nextLine();      
-                if (input.equalsIgnoreCase("exit")){
+                if (input.equalsIgnoreCase("exit") || input.isEmpty()) {
                     System.out.println("Goodbye, my love!");
                     scanner.close();
                     break;
                 }
 
-                CharStream expression = CharStreams.fromString(input);
-                CalculatorLexer lexer = new CalculatorLexer(expression);
-                CommonTokenStream tokens = new CommonTokenStream(lexer);
-                CalculatorParser parser = new CalculatorParser(tokens);
-                ParseTree tree = parser.start();
-                System.out.println(tree.toStringTree(parser));
+                System.out.println(input);
+
+                // CharStream expression = CharStreams.fromString(input);
+                // CalculatorLexer lexer = new CalculatorLexer(expression);
+                // CommonTokenStream tokens = new CommonTokenStream(lexer);
+                // CalculatorParser parser = new CalculatorParser(tokens);
+                // ParseTree tree = parser.start();
+
+                // CalculatorFinalVisitor calculator = new CalculatorFinalVisitor();
+
+                // Double result = calculator.visit(tree);
+
+                // System.out.printf("Calculation result: %n\n", result);
 
             }
         }catch(Exception err){
